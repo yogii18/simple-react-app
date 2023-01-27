@@ -9,15 +9,15 @@ pipeline{
             }
         }
         
-        stage('start'){
+        stage('install'){
             steps{
-                sh 'npm run start'
+                sh 'npm i node@lts'
             }
         }
         
-        stage('init'){
+        stage('start'){
             steps{
-                sh 'npm init'
+                sh 'npm run start'
             }
         }
         
@@ -26,14 +26,7 @@ pipeline{
                 sh 'npm run build'
             }
         }
-        
-        stage('install'){
-            steps{
-                sh 'npm i node@lts'
-            }
-        }
-        
-        
+
         stage('test'){
             steps{
                 sh 'npm test'
