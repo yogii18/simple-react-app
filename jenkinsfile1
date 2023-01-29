@@ -1,17 +1,14 @@
 pipeline{
     agent any
-    
-
-    stages{
-    
-        WorkspaceCleanupCheckout(true)
+    options {
+        skipDefaultCheckout(true)
+    }
+    stages {
         
         stage('clean'){
             steps{
-                 cleanWs(*)
-            
+                 cleanWs()
             }
-        
         }
         stage('pull'){
             steps{
@@ -34,3 +31,4 @@ pipeline{
 
         
     }
+}
