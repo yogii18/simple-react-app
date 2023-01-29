@@ -1,0 +1,36 @@
+pipeline{
+    agent any
+    
+
+    stages{
+    
+        WorkspaceCleanupCheckout(true)
+        
+        stage('clean'){
+            steps{
+                 cleanWs(*)
+            
+            }
+        
+        }
+        stage('pull'){
+            steps{
+                sh 'git clone https://github.com/yogii18/simple-react-app.git .'
+            }
+        }
+        
+        stage('install'){
+            steps{
+                sh 'npm i '
+            }
+        }
+        
+        
+        stage('build'){
+            steps{
+                sh 'npm run build'
+            }
+        }
+
+        
+    }
